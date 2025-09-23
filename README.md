@@ -20,11 +20,14 @@ You will implement a machine learning algorithm to create an intelligent Hangman
 
 **Clone the Repository**
 ```bash
-# Clone the instructor repository
+# Clone the repository
 git clone https://github.com/Dante-of-Chess/hangman-ml-challenge.git
 
 # Install Python dependencies
 pip install -r requirements.txt
+```
+
+**IMPORTANT**: Before proceeding, **contact the admin to request API access** for project submission. You'll need this access to submit your completed project.
 
 
 ### Step 2: Implement Your Bot
@@ -72,22 +75,48 @@ Choose your preferred interface (Flask or Dash) and you'll get:
 - Performance statistics
 - Simulation results
 
-### Step 4: Test Your Bot
+### Step 4: Test Your Bot Thoroughly
+
+**Option A: Quick Success Rate Test (Recommended)**
+```bash
+python test_bot.py
+```
+This will:
+- Test your bot on sample words automatically
+- Calculate win rate and performance metrics
+- Show detailed results and success criteria
+- Tell you if your bot is ready for API submission
+
+**Option B: Test via Official API (After getting API access)**
+```bash
+python test_api.py
+```
+This will:
+- Submit your bot to the official API for evaluation
+- Monitor evaluation progress in real-time
+- Show official results and performance metrics
+- Compare against official success criteria
+
+**Option C: Interactive Web Interface**
 ```bash
 python user_template.py
 ```
-
 This will:
-- Test your bot on sample words
-- Launch web interface
-- Show win rate and performance
+- Launch web interface (Flask or Dash)
 - Provide interactive gameplay
+- Run simulations through the web UI
+
+**CRITICAL**: Test your bot thoroughly before submission! Use `test_bot.py` for quick validation, then `test_api.py` for official evaluation.
+
+**Only proceed to submission after confirming your bot works correctly!**
 
 ### Step 5: Submit Your Project
+**Prerequisites**: Your bot must be fully tested and working correctly!
+
 1. Save your complete project (bot + web interface)
-2. **Contact the admin to request submission access** for your project
-3. Once you receive the submission details and credentials, submit your project
-4. Follow the admin's instructions for checking your results
+2. **Use the API access you requested in Step 1** to submit your project
+3. Follow the admin's instructions for checking your results
+4. Monitor your performance and rankings
 
 ## Machine Learning Approach Ideas
 
@@ -132,6 +161,8 @@ def predict_next_letter(self, masked_word, wrong_guesses):
 ## Files Included
 
 - `user_template.py` - Complete starter template with ML + web interface
+- `test_bot.py` - Standalone script to test bot success rate via code
+- `test_api.py` - Script to test bot via official API (requires API access)
 - `training_words.txt` - Training dataset (176K words)
 - `sample_words.txt` - Sample dataset for quick testing (1K words)
 - `requirements.txt` - Python dependencies
@@ -146,9 +177,15 @@ def predict_next_letter(self, masked_word, wrong_guesses):
 
 ## Project Submission
 
-**IMPORTANT**: Contact the admin to request submission access for your project.
+**IMPORTANT**: Contact the admin **from the start** to request API access for project submission.
 
-**Note**: Submission details are not included in this repository for security reasons. Please reach out to the admin for the submission process and any required credentials.
+**Workflow**:
+1. **Request API access** before beginning development
+2. **Develop and test** your bot thoroughly
+3. **Submit** using the provided API access
+4. **Monitor** your results and rankings
+
+**Note**: API access is required for submission. Contact the admin early to avoid delays.
 
 ## Security & Safety
 
@@ -159,10 +196,11 @@ This repository is designed to be safe and self-contained:
 
 ## Getting Help
 
+- **Request API access from the admin first** - don't wait until the end!
 - Check the starter template for examples
-- Test your bot locally before submitting
+- Test your bot thoroughly before submitting
 - Use the sample words for quick testing
-- Contact the admin for submission access
+- Ensure your bot works correctly before submission
 - Follow security best practices when working with the repository
 
 Good luck with your Hangman ML Challenge!

@@ -588,22 +588,10 @@ def main():
     # Create bot
     bot = HangmanBot(training_words)
     
-    # Choose interface type
-    print("\nChoose your web interface:")
-    print("1. Flask (traditional web app)")
-    print("2. Dash (pure Python, no HTML/CSS/JS)")
-    
-    choice = input("Enter choice (1 or 2): ").strip()
-    
-    if choice == "2" and DASH_AVAILABLE:
-        print("Starting Dash app...")
-        app = create_dash_app(bot)
-        if app:
-            app.run_server(debug=True, host='0.0.0.0', port=8050)
-    else:
-        print("Starting Flask app...")
-        app = create_flask_app(bot)
-        app.run(debug=True, host='0.0.0.0', port=5000)
+    # Start Flask app by default (production-ready)
+    print("Starting Flask web interface...")
+    app = create_flask_app(bot)
+    app.run(debug=False, host='0.0.0.0', port=5000)
 
 if __name__ == "__main__":
     main()
