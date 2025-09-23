@@ -6,7 +6,7 @@ A machine learning challenge where you build an intelligent Hangman bot and web 
 
 You will implement a machine learning algorithm to create an intelligent Hangman bot, then build a web interface using Flask or Dash to showcase your work. The challenge includes:
 
-- Machine Learning: Train models on 176K+ training words
+- Machine Learning: Train models on 300k+ training words
 - Web Development: Build interactive interfaces using Python frameworks
 - Competition: Submit your bot for evaluation on hidden test words
 
@@ -39,7 +39,7 @@ pip install -r requirements.txt
 class HangmanBot:
     def __init__(self, training_words):
         # TODO: Train your model here
-        # Load training_words.txt (176K words)
+        # Load training_words.txt (300K words)
         pass
     
     def predict_next_letter(self, masked_word, wrong_guesses):
@@ -163,7 +163,7 @@ def predict_next_letter(self, masked_word, wrong_guesses):
 - `user_template.py` - Complete starter template with ML + web interface
 - `test_bot.py` - Standalone script to test bot success rate via code
 - `test_api.py` - Script to test bot via official API (requires API access)
-- `training_words.txt` - Training dataset (176K words)
+- `training_words.txt` - Training dataset (300K words)
 - `sample_words.txt` - Sample dataset for quick testing (1K words)
 - `requirements.txt` - Python dependencies
 - `README.md` - This file
