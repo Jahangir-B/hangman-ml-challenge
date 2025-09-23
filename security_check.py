@@ -54,6 +54,11 @@ IGNORE_FILES = {
     'sample_words.txt',    # Contains words that might match patterns
 }
 
+# Patterns to ignore in specific files
+IGNORE_PATTERNS_IN_FILES = {
+    # No special exceptions needed
+}
+
 def check_file_security(file_path):
     """Check a single file for security issues"""
     issues = []
@@ -65,6 +70,11 @@ def check_file_security(file_path):
             
             for line_num, line in enumerate(lines, 1):
                 for category, patterns in SECURITY_PATTERNS.items():
+                    # Check if this category should be ignored for this file
+                    file_name = file_path.name if hasattr(file_path, 'name') else str(file_path)
+                    if file_name in IGNORE_PATTERNS_IN_FILES and category in IGNORE_PATTERNS_IN_FILES[file_name]:
+                        continue
+                    
                     for pattern in patterns:
                         if re.search(pattern, line, re.IGNORECASE):
                             issues.append({

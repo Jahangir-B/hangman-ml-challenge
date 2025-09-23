@@ -1,4 +1,4 @@
-# Hangman ML Challenge - Student Package
+# Hangman ML Challenge - User Package
 
 A machine learning challenge where you build an intelligent Hangman bot and web interface using Python.
 
@@ -9,7 +9,6 @@ You will implement a machine learning algorithm to create an intelligent Hangman
 - Machine Learning: Train models on 176K+ training words
 - Web Development: Build interactive interfaces using Python frameworks
 - Competition: Submit your bot for evaluation on hidden test words
-- Leaderboard: Real-time ranking system
 
 ## What You Need to Do
 
@@ -19,25 +18,17 @@ You will implement a machine learning algorithm to create an intelligent Hangman
 
 ### Step 1: Setup Environment
 
-**Option A: Clone the Instructor Repository**
+**Clone the Repository**
 ```bash
 # Clone the instructor repository
-git clone https://github.com/Dante-of-Chess/hangman-ml-challenge-instructor.git
-cd hangman-ml-challenge-instructor/student-package
+git clone https://github.com/Dante-of-Chess/hangman-ml-challenge.git
 
 # Install Python dependencies
 pip install -r requirements.txt
-```
 
-**Option B: Download Student Package**
-```bash
-# Download the student package zip file
-# Extract and navigate to the folder
-pip install -r requirements.txt
-```
 
 ### Step 2: Implement Your Bot
-1. Open `student_template.py`
+1. Open `user_template.py`
 2. Find the `HangmanBot` class
 3. Implement these methods:
 
@@ -73,18 +64,17 @@ The starter code includes TWO web interface options:
 
 **Run the starter:**
 ```bash
-python student_template.py
+python user_template.py
 ```
 
 Choose your preferred interface (Flask or Dash) and you'll get:
 - Interactive Hangman game
-- Real-time bot predictions
 - Performance statistics
 - Simulation results
 
 ### Step 4: Test Your Bot
 ```bash
-python student_template.py
+python user_template.py
 ```
 
 This will:
@@ -95,18 +85,9 @@ This will:
 
 ### Step 5: Submit Your Project
 1. Save your complete project (bot + web interface)
-2. **Contact the instructor for API credentials** to submit your project
-3. Once you receive the API endpoint, submit via:
-   ```bash
-   curl -X POST [API_ENDPOINT]/api/evaluate \
-     -F "files=@my_project.py" \
-     -F "student_id=your_name" \
-     -F "model_name=my_bot"
-   ```
-4. Check your results:
-   ```bash
-   curl [API_ENDPOINT]/api/status/job_id
-   ```
+2. **Contact the admin to request submission access** for your project
+3. Once you receive the submission details and credentials, submit your project
+4. Follow the admin's instructions for checking your results
 
 ## Machine Learning Approach Ideas
 
@@ -150,7 +131,7 @@ def predict_next_letter(self, masked_word, wrong_guesses):
 
 ## Files Included
 
-- `student_template.py` - Complete starter template with ML + web interface
+- `user_template.py` - Complete starter template with ML + web interface
 - `training_words.txt` - Training dataset (176K words)
 - `sample_words.txt` - Sample dataset for quick testing (1K words)
 - `requirements.txt` - Python dependencies
@@ -163,25 +144,25 @@ def predict_next_letter(self, masked_word, wrong_guesses):
 - **Fair Competition**: Consistent evaluation for all participants
 - **Python Only**: No external languages or frameworks required
 
-## API Endpoint
+## Project Submission
 
-**IMPORTANT**: Contact the instructor to obtain the API endpoint for project submission.
+**IMPORTANT**: Contact the admin to request submission access for your project.
 
-**Note**: The API endpoint is not included in this repository for security reasons. Please reach out to the instructor for the submission URL and any required credentials.
+**Note**: Submission details are not included in this repository for security reasons. Please reach out to the admin for the submission process and any required credentials.
 
 ## Security & Safety
 
 This repository is designed to be safe and self-contained:
-- No hardcoded credentials or API keys
+- No hardcoded credentials or keys
 - Protected by `.gitignore` to prevent sensitive file commits
-- Contact instructor for API endpoints
+- Contact admin for submission access
 
 ## Getting Help
 
 - Check the starter template for examples
 - Test your bot locally before submitting
 - Use the sample words for quick testing
-- Submit early and often to see your progress
+- Contact the admin for submission access
 - Follow security best practices when working with the repository
 
 Good luck with your Hangman ML Challenge!

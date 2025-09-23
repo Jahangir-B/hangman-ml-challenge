@@ -1,5 +1,5 @@
 """
-Hangman ML Challenge - Student Template
+Hangman ML Challenge - User Template
 Complete starter template for ML bot + web interface development.
 
 This template provides:
@@ -9,7 +9,7 @@ This template provides:
 - Complete game simulation
 - Performance evaluation
 
-Students need to implement the HangmanBot class and choose a web framework.
+Users need to implement the HangmanBot class and choose a web framework.
 """
 
 import random
@@ -36,7 +36,7 @@ class HangmanBot:
     """
     Your Hangman Bot Implementation
     
-    This is the core ML component students need to implement!
+    This is the core ML component users need to implement!
     """
     
     def __init__(self, training_words: List[str]):
