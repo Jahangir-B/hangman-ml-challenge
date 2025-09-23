@@ -95,16 +95,17 @@ This will:
 
 ### Step 5: Submit Your Project
 1. Save your complete project (bot + web interface)
-2. Submit via API:
+2. **Contact the instructor for API credentials** to submit your project
+3. Once you receive the API endpoint, submit via:
    ```bash
-   curl -X POST https://hangman-ml-challenge-instructor-production.up.railway.app/api/evaluate \
+   curl -X POST [API_ENDPOINT]/api/evaluate \
      -F "files=@my_project.py" \
      -F "student_id=your_name" \
      -F "model_name=my_bot"
    ```
-3. Check your results:
+4. Check your results:
    ```bash
-   curl https://hangman-ml-challenge-instructor-production.up.railway.app/api/status/job_id
+   curl [API_ENDPOINT]/api/status/job_id
    ```
 
 ## Machine Learning Approach Ideas
@@ -164,9 +165,16 @@ def predict_next_letter(self, masked_word, wrong_guesses):
 
 ## API Endpoint
 
-**IMPORTANT**: Replace `https://your-api.railway.app` with the actual API endpoint provided by your instructor.
+**IMPORTANT**: Contact the instructor to obtain the API endpoint for project submission.
 
-**Current API URL**: `https://hangman-ml-challenge-instructor-production.up.railway.app`
+**Note**: The API endpoint is not included in this repository for security reasons. Please reach out to the instructor for the submission URL and any required credentials.
+
+## Security & Safety
+
+This repository is designed to be safe and self-contained:
+- No hardcoded credentials or API keys
+- Protected by `.gitignore` to prevent sensitive file commits
+- Contact instructor for API endpoints
 
 ## Getting Help
 
@@ -174,5 +182,6 @@ def predict_next_letter(self, masked_word, wrong_guesses):
 - Test your bot locally before submitting
 - Use the sample words for quick testing
 - Submit early and often to see your progress
+- Follow security best practices when working with the repository
 
 Good luck with your Hangman ML Challenge!

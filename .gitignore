@@ -1,0 +1,91 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Security sensitive files
+*.key
+*.pem
+*.p12
+*.pfx
+secrets.txt
+credentials.txt
+config.ini
+.env.local
+.env.production
+.env.staging
+
+# Model files (if large)
+*.pkl
+*.joblib
+*.h5
+*.model
+
+# Data files (if sensitive)
+# Uncomment if you want to exclude data files
+# *.csv
+# *.json
+# *.xlsx
+
+# API keys and tokens
+api_keys.txt
+tokens.txt
+railway.json
+railway.toml
+
+# Backup files
+*.bak
+*.backup
