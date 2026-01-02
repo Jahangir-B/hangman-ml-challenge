@@ -1,0 +1,101 @@
+from collections import defaultdict, Counter
+import re
+
+class HangmanBot:
+    def __init__(self, training_words):
+        """
+        This function runs once when the bot is created.
+        Here we prepare the training data so guessing letters is faster later.
+        """
+
+        # Store words grouped by their length
+        # Example: {5: ["apple", "grape"], 6: ["banana"]}
+        self.words_by_length = defaultdict(list)
+
+        # Clean and store all training words
+        for word in training_words:
+            word = word.strip().lower()  # remove spaces and make lowercase
+            if word:
+                self.words_by_length[len(word)].append(word)
+
+        # Count how often each letter appears in ALL training words
+        # This is used as a fallback if we get stuck
+        self.global_freq = Counter("".join(training_words))
+
+    def predict_next_letter(self, masked_word, wrong_guesses):
+        """
+        This function is called every time the game needs a new letter guess.
+
+        masked_word: string like "h_ll_"
+        wrong_guesses: set like {"x", "z"}
+
+        The goal is to return ONE letter that has not been guessed yet.
+        """
+
+        masked_word = masked_word.lower()
+        wrong_guesses = set(wrong_guesses)
+
+        # Letters we already know or already guessed incorrectly
+        guessed_letters = set(masked_word.replace("_", "")) | wrong_guesses
+
+        word_length = len(masked_word)
+
+        # ------------------------------
+        # Step 1: Simple vowel guessing
+        # ------------------------------
+        # If no letters are known yet, guessing vowels early is usually helpful
+        if masked_word.count("_") == word_length:
+            for vowel in "aeiou":
+                if vowel not in guessed_letters:
+                    return vowel
+
+        # ---------------------------------------
+        # Step 2: Build a pattern from the word
+        # ---------------------------------------
+        # Example:
+        # masked_word = "h_ll_"
+        # regex pattern = "^h.ll.$"
+        pattern = "^" + masked_word.replace("_", ".") + "$"
+        regex = re.compile(pattern)
+
+        # ---------------------------------------
+        # Step 3: Find all possible matching words
+        # ---------------------------------------
+        possible_words = []
+
+        for word in self.words_by_length[word_length]:
+            # Word must match known letter positions
+            if not regex.match(word):
+                continue
+
+            # Word must NOT contain any wrong letters
+            if any(letter in wrong_guesses for letter in word):
+                continue
+
+            possible_words.append(word)
+
+        # ------------------------------------------------
+        # Step 4: Count letter frequency in unknown spots
+        # ------------------------------------------------
+        letter_counts = Counter()
+
+        for word in possible_words:
+            for i, letter in enumerate(word):
+                # Only count letters where we still have "_"
+                if masked_word[i] == "_" and letter not in guessed_letters:
+                    letter_counts[letter] += 1
+
+        # If we found any useful letters, return the most common one
+        if letter_counts:
+            return letter_counts.most_common(1)[0][0]
+
+        # ---------------------------------------
+        # Step 5: Fallback if nothing matched
+        # ---------------------------------------
+        # Use the most common letters overall
+        for letter, _ in self.global_freq.most_common():
+            if letter not in guessed_letters:
+                return letter
+
+        # This should almost never happen, but just in case
+        return "e"
