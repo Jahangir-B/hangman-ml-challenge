@@ -1,0 +1,96 @@
+class HangmanBot:
+    def __init__(self, training_words):       
+        # Save the list of twords
+        self.words = training_words
+        # Dictionary to store letters app 
+        self.letter_counts = {}
+         # Go through every word
+        for word in self.words:
+            # Go through each letter
+            for letter in word:
+                if letter.isalpha():
+                    # repeat letters
+                    if letter in self.letter_counts:
+                        self.letter_counts[letter] = self.letter_counts[letter] + 1
+                    else:
+                        # new letter
+                        self.letter_counts[letter] = 1
+
+        # let store
+        self.letter_order = []
+        temp_counts = {}
+        for key in self.letter_counts:
+            temp_counts[key] = self.letter_counts[key]
+        while len(temp_counts) > 0:
+            highest_letter = None
+            highest_value = -1
+            for letter in temp_counts:
+                if temp_counts[letter] > highest_value:
+                    highest_value = temp_counts[letter]
+                    highest_letter = letter
+           
+            # most common let
+            self.letter_order.append(highest_letter)
+            del temp_counts[highest_letter]
+
+
+
+    def predict_next_letter(self, masked_word, wrong_guesses):
+        # guessed let
+        used_letters = set()
+       
+        # w guessed lrt
+        for letter in wrong_guesses:
+            used_letters.add(letter)
+        for char in masked_word:
+            if char != "_":
+                used_letters.add(char)
+      
+        # match words
+        possible_words = []
+        for word in self.words:
+           # check length
+            if len(word) != len(masked_word):
+                continue
+            match = True
+
+            for i in range(len(word)):
+                if masked_word[i] != "_":
+                    if word[i] != masked_word[i]:
+                        match = False
+                else:
+                    # hid letters =! used letters
+                    if word[i] in used_letters:
+                        match = False
+
+            if match:
+                possible_words.append(word)
+
+        # new Dictionarry for matches
+        letter_scores = {}
+
+        # Count letters
+        for word in possible_words:
+            for letter in word:
+                if letter not in used_letters:
+                    if letter in letter_scores:
+                        letter_scores[letter] = letter_scores[letter] + 1
+                    else:
+                        letter_scores[letter] = 1
+
+        # Find the letter with the highest count
+        best_letter = None
+        best_score = -1
+
+        for letter in letter_scores:
+            if letter_scores[letter] > best_score:
+                best_score = letter_scores[letter]
+                best_letter = letter
+
+        # If a letter found return it
+        if best_letter is not None:
+            return best_letter
+        for letter in self.letter_order:
+            if letter not in used_letters:
+                return letter
+        return "a"
